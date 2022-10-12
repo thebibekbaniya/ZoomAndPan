@@ -6,14 +6,15 @@
     <UseWPF>true</UseWPF>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Zoom and Pan Control for WPF</Title>
-    <Version>1.0.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Bibek Baniya</Authors>
     <Copyright>© 2022 Bibek Baniya</Copyright>
     <Description>This is the zoom and pan control for WPF.</Description>
     <PackageProjectUrl>https://github.com/thebibekbaniya/ZoomAndPan</PackageProjectUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>README ZoomAndPan WPF.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/thebibekbaniya/ZoomAndPan</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +22,7 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\README.md">
+    <None Include="..\README ZoomAndPan WPF.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
