@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="sampleImage.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="sampleImage.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ZoomAndPan.Wpf" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
