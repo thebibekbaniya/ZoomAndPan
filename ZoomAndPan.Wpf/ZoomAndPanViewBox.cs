@@ -76,7 +76,7 @@ namespace ZoomAndPan.Wpf
         /// </summary>
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
-            base.OnMouseLeftButtonDown(e);
+            base.OnMouseDown(e);
 
             GetZoomAndPanControl().SaveZoom();
             _mouseHandlingMode = MouseHandlingModeEnum.Panning;
@@ -112,7 +112,7 @@ namespace ZoomAndPan.Wpf
         /// </summary>
         protected override void OnMouseUp(MouseButtonEventArgs e)
         {
-            base.OnMouseLeftButtonUp(e);
+            base.OnMouseUp(e);
 
             if (_mouseHandlingMode == MouseHandlingModeEnum.DragZooming)
             {
@@ -175,7 +175,7 @@ namespace ZoomAndPan.Wpf
 
         #region Background--Visual Brush
         /// <summary>
-        /// The X coordinate of the content focus, this is the point that we are focusing on when zooming.
+        /// The visual element to render as a minimap thumbnail in the viewbox.
         /// </summary>
         public FrameworkElement Visual
         {
@@ -188,13 +188,26 @@ namespace ZoomAndPan.Wpf
         private static void OnVisualChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var c = (ZoomAndPanViewBox)d;
+            if (e.OldValue is FrameworkElement oldElement)
+                oldElement.SizeChanged -= c.OnVisualSizeChanged;
             c.SetBackground(e.NewValue as FrameworkElement);
+        }
+
+        private VisualBrush _visualBrush;
+
+        private void OnVisualSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (_viewportCanvas == null) return;
+            var element = (FrameworkElement)sender;
+            _viewportCanvas.Height = element.ActualHeight;
+            _viewportCanvas.Width = element.ActualWidth;
+            _viewportCanvas.Background = _visualBrush;
         }
 
         private void SetBackground(FrameworkElement frameworkElement)
         {
-            frameworkElement = frameworkElement ?? (DataContext as ContentControl)?.Content as FrameworkElement;
-            var visualBrush = new VisualBrush
+            frameworkElement ??= (DataContext as ContentControl)?.Content as FrameworkElement;
+            _visualBrush = new VisualBrush
             {
                 Visual = frameworkElement,
                 ViewboxUnits = BrushMappingMode.RelativeToBoundingBox,
@@ -203,12 +216,8 @@ namespace ZoomAndPan.Wpf
                 Stretch = Stretch.Fill
             };
 
-            if (frameworkElement != null) frameworkElement.SizeChanged += (s, e) =>
-            {
-                _viewportCanvas.Height = frameworkElement.ActualHeight;
-                _viewportCanvas.Width = frameworkElement.ActualWidth;
-                _viewportCanvas.Background = visualBrush;
-            };
+            if (frameworkElement != null)
+                frameworkElement.SizeChanged += OnVisualSizeChanged;
         }
         #endregion
 

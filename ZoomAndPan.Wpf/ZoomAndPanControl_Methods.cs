@@ -171,14 +171,13 @@ namespace ZoomAndPan.Wpf
         }
 
         /// <summary>
-        /// Do animation that scales the content so that it fits completely in the control.
+        /// Do an animated zoom so that the content fits completely within the control.
         /// </summary>
         public void AnimatedScaleToFit()
         {
             if (_content == null)
                 throw new ApplicationException("PART_Content was not found in the ZoomAndPanControl visual template!");
-            ZoomTo(FillZoomValue);
-            //AnimatedZoomTo(new Rect(0, 0, _content.ActualWidth, _content.ActualHeight));
+            AnimatedZoomTo(FitZoomValue);
         }
 
         /// <summary>
@@ -189,7 +188,6 @@ namespace ZoomAndPan.Wpf
             if (_content == null)
                 throw new ApplicationException("PART_Content was not found in the ZoomAndPanControl visual template!");
             ZoomTo(FitZoomValue);
-            //ZoomTo(new Rect(0, 0, _content.ActualWidth, _content.ActualHeight));
         }
 
         /// <summary>
