@@ -1,35 +1,42 @@
-# ZoomAndPan ⚡️
+# ZoomAndPan WPF Control
 
-## Zoom and Pan Control for WPF
+A feature-rich Zoom and Pan control for WPF. Supports animated zoom, mouse-wheel zoom, click-drag pan, drag-to-zoom, fit/fill viewport, undo/redo, ScrollViewer integration, and a minimap control.
 
-## Terms and conditions of Use
+## NuGet
 
-The software/script is provided "as is", without warranty of any kind, express or implied including but not limited to the warranties of merchantability, fitness or a particular purpose and non-infringement. In no event shall developers be liable for any claim, damages or any other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with software/script or the use or other dealings in the software/script.
+The latest release is available at:
+**https://www.nuget.org/packages/ZoomAndPan.Wpf/**
 
-> > This software/script is subject to continued development; if you experience any issues with this software, please advise the [developers](https://github.com/thebibekbaniya/ZoomAndPan.git).
+A new package is published to NuGet with each release.
 
-## Getting Started
+## Installation
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-You will require following technology: 📖 💻
+**Package Manager**
+```
+Install-Package ZoomAndPan.Wpf
+```
 
-✔️ Technology: WPF Class Library\
-✔️ Compatibility: Windows\
-✔️ Programming: C# (.NET Core 6)\
-✔️ Architecture: MVVM\
+**.NET CLI**
+```
+dotnet add package ZoomAndPan.Wpf
+```
 
-## Release
+**PackageReference**
+```xml
+<PackageReference Include="ZoomAndPan.Wpf" Version="*" />
+```
 
-- [Nuget Package](https://www.nuget.org/packages/ZoomAndPan.Wpf)
+## Quick Start
 
-## How To Use
+```xml
+xmlns:zap="clr-namespace:ZoomAndPan.Wpf;assembly=ZoomAndPan.Wpf"
 
-- You can use package manager `NuGet\Install-Package ZoomAndPan.Wpf -Version 1.0.1` or,
-- .NET CLI `dotnet add package ZoomAndPan.Wpf --version 1.0.1` or,
-- PackageReference in .csproj `<PackageReference Include="ZoomAndPan.Wpf" Version="1.0.1" />` or,
-- Packet CLI `paket add ZoomAndPan.Wpf --version 1.0.1` or,
-- Script & Interactive `#r "nuget: ZoomAndPan.Wpf, 1.0.1"`
+<zap:ZoomAndPanScrollViewer ZoomAndPanInitialPosition="FitScreen">
+    <Image Source="yourimage.png" />
+</zap:ZoomAndPanScrollViewer>
+```
 
-## [Documentation, Sample and Guides]
+## Documentation & Source
 
-- [GitHub - https://github.com/thebibekbaniya/ZoomAndPan.git](https://github.com/thebibekbaniya/ZoomAndPan.git)
+Full documentation, samples, and source code:
+**https://github.com/thebibekbaniya/ZoomAndPan**

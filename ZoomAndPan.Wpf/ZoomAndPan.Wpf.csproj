@@ -1,15 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows;</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows;net10.0-windows;</TargetFrameworks>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Zoom and Pan Control for WPF</Title>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Bibek Baniya</Authors>
-    <Copyright>© 2022 Bibek Baniya</Copyright>
-    <Description>This is the zoom and pan control for WPF.</Description>
+    <Copyright>©2026 Bibek Baniya</Copyright>
+    <Description>A feature-rich Zoom and Pan control for WPF. Supports animated zoom, mouse-wheel zoom, click-drag pan, drag-to-zoom, fit/fill, undo/redo, ScrollViewer integration (IScrollInfo), a minimap (ZoomAndPanViewBox), and MVVM-friendly commands and bindings. Targets .NET 6, 7, 8, and 10 (Windows).</Description>
+    <PackageTags>WPF;zoom;pan;control;mvvm;scrollviewer;minimap;net6;net8;net10;windows</PackageTags>
     <PackageProjectUrl>https://github.com/thebibekbaniya/ZoomAndPan</PackageProjectUrl>
     <PackageReadmeFile>README ZoomAndPan WPF.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/thebibekbaniya/ZoomAndPan</RepositoryUrl>

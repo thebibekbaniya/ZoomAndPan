@@ -44,12 +44,12 @@ namespace ZoomAndPan.Wpf
         private KeepAliveTimer _timer750Miliseconds;
 
 
-        /// <summary> 
-        ///  Record the last saved zoom level, so that we can return to it if no activity for 1550 milliseconds
+        /// <summary>
+        ///  Record the last saved zoom level, so that we can return to it if no activity for 1500 milliseconds
         /// </summary>
         public void DelayedSaveZoom1500Miliseconds()
         {
-            if (!_timer1500Miliseconds?.Running != true) _viewportZoomCache = CreateUndoRedoStackItem();
+            if (_timer1500Miliseconds?.Running != true) _viewportZoomCache = CreateUndoRedoStackItem();
             (_timer1500Miliseconds ?? (_timer1500Miliseconds = new KeepAliveTimer(TimeSpan.FromMilliseconds(1500), () =>
             {
                 if (_undoStack.Any() && _viewportZoomCache.Equals(_undoStack.Peek())) return;
@@ -133,7 +133,7 @@ namespace ZoomAndPan.Wpf
 
             public override string ToString()
             {
-                return $"Rectangle {{{Rect.X},{Rect.X}}}, Zoom {Zoom}";
+                return $"Rectangle {{{Rect.X},{Rect.Y}}}, Zoom {Zoom}";
             }
 
             public bool Equals(UndoRedoStackItem obj)

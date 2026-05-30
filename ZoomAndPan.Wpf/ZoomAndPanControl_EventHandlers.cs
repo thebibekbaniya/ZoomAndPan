@@ -189,11 +189,11 @@ namespace ZoomAndPan.Wpf
         {
             base.OnMouseDoubleClick(e);
 
-            if ((Keyboard.Modifiers & ModifierKeys.Shift) == 0)
-            {
-                SaveZoom();
-                this.AnimatedSnapTo(e.GetPosition(_content));
-            }
+            // The second mousedown of a double-click always activates panning or zooming mode.
+            // Cancel it here so OnMouseUp doesn't trigger an unwanted pan or zoom action,
+            // and so OnMouseMove doesn't pan against the content offset (causing jitter or movement).
+            _mouseHandlingMode = MouseHandlingModeEnum.None;
+            this.ReleaseMouseCapture();
         }
 
         #region private Zoom methods
@@ -368,9 +368,10 @@ namespace ZoomAndPan.Wpf
         protected override void OnContentChanged(object oldContent, object newContent)
         {
             base.OnContentChanged(oldContent, newContent);
-            if (oldContent != null)
-                ((FrameworkElement)oldContent).SizeChanged -= SetZoomAndPanInitialPosition;
-            ((FrameworkElement)newContent).SizeChanged += SetZoomAndPanInitialPosition;
+            if (oldContent is FrameworkElement oldElement)
+                oldElement.SizeChanged -= SetZoomAndPanInitialPosition;
+            if (newContent is FrameworkElement newElement)
+                newElement.SizeChanged += SetZoomAndPanInitialPosition;
         }
 
         /// <summary>

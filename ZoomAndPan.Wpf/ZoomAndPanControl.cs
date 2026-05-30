@@ -166,6 +166,8 @@ namespace ZoomAndPan.Wpf
         {
             var size = base.ArrangeOverride(this.DesiredSize);
 
+            if (_content == null) return size;
+
             if (_content.DesiredSize != _unScaledExtent)
             {
                 //
@@ -243,8 +245,6 @@ namespace ZoomAndPan.Wpf
 
         private static void ZoomAndPanInitialPositionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var zoomAndPanControl = (ZoomAndPanControl)d;
-            // zoomAndPanControl.SetZoomAndPanInitialPosition();
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace ZoomAndPan.Wpf
             set { SetValue(MousePositionProperty, value); }
         }
         public static readonly DependencyProperty MousePositionProperty = DependencyProperty.Register("MousePosition",
-            typeof(Point?), typeof(ZoomAndPanControl), new FrameworkPropertyMetadata(null, MinimumOrMaximumZoom_PropertyChanged));
+            typeof(Point?), typeof(ZoomAndPanControl), new FrameworkPropertyMetadata(null));
 
         /// <summary>
         /// This is used for binding a slider to control the zoom. Cannot use the InternalUseAnimations because of all the 
