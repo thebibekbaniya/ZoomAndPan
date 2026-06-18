@@ -7,7 +7,7 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-## [Unreleased]
+## [2.0.0] — 2026
 
 ### Fixed
 
@@ -24,25 +24,6 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - `ZoomAndPanInitialPositionChanged` callback cleaned up (empty body, no dead commented code).
-
----
-
-## [2.0.0] — 2025
-
-### Added
-
-- Multi-target support: net6.0-windows, net7.0-windows, net8.0-windows, net10.0-windows
-- `ZoomAndPanScrollViewer` wrapper control exposing all commands via proxy `ICommand` properties
-- `ZoomAndPanViewBox` minimap with draggable viewport indicator and shift+drag zoom
-- `ZoomAndPanInitialPosition` property (`FitScreen`, `FillScreen`, `OneHundredPercentCentered`)
-- `MinimumZoomType` property with `FitScreen` and `FillScreen` options
-- `MousePosition` bindable dependency property (content coordinates, nullable)
-- `ZoomRatioFromMinimumCommand` command
-- Undo/Redo system with `UndoZoomCommand` / `RedoZoomCommand` and debounced auto-save
-- `ZoomAdjustConverter` for logarithmic-scale slider binding
-- `ZoomAndPanViewBoxClampConverter` for minimap viewport rectangle sizing
-
----
 
 ## [1.0.1] — 2024
 
